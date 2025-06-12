@@ -8,7 +8,7 @@ const Bookshelf = () => {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    axios.get('https://your-server-url/api/books')
+    axios.get('http://localhost:3000/books')
       .then(res => setBooks(res.data))
       .catch(err => console.error(err));
   }, []);

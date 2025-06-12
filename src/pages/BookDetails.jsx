@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthProvider';
-import toast from 'react-hot-toast';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -12,12 +12,12 @@ const BookDetails = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`https://your-server-url/api/books/${id}`).then(res => setBook(res.data));
-    axios.get(`https://your-server-url/api/reviews/${id}`).then(res => setReviews(res.data));
+    axios.get(`http://localhost:3000/books/${id}`).then(res => setBook(res.data));
+    axios.get(`http://localhost:3000/reviews/${id}`).then(res => setReviews(res.data));
   }, [id]);
 
   const handleUpvote = () => {
-    axios.patch(`https://your-server-url/api/books/${id}/upvote`, { email: user.email })
+    axios.patch(`http://localhost:3000/books/${id}/upvote`, { email: user.email })
       .then(res => {
         toast.success('Upvoted!');
         setBook(res.data);
@@ -26,7 +26,7 @@ const BookDetails = () => {
   };
 
   const handleReview = () => {
-    axios.post(`https://your-server-url/api/reviews`, {
+    axios.post(`http://localhost:3000/reviews`, {
       book_id: id,
       user_email: user.email,
       review_text: reviewText

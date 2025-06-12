@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthProvider';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const AddBook = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://your-server-url/api/books', formData)
+    axios.post('http://localhost:3000/books', formData)
       .then(() => {
         toast.success('Book added!');
         navigate('/my-books');
