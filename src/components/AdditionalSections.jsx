@@ -1,10 +1,12 @@
+import Lottie from 'lottie-react';
 import React from 'react';
+import why from '../assets/animation/why2.json'
 
 const AdditionalSections = () => {
     return (
         <div>
-            <section className="bg-base-300 py-12 mb-12">
-                <div className="max-w-4xl mx-auto px-4 text-center">
+            <section className="bg-base-300 py-12 my-24">
+                <div className="max-w-4xl mx-auto px-4 py-14 text-center">
                     <h2 className="text-3xl font-bold text-primary mb-4">📘 Track Your Reading Goals</h2>
                     <p className="text-gray-600 text-lg leading-relaxed">
                         Stay motivated and build a consistent reading habit by organizing your progress into
@@ -20,16 +22,17 @@ const AdditionalSections = () => {
                 </div>
             </section>
 
-            <section className="container mx-auto px-4 mb-16">
+            <section className="container mx-auto px-4 my-24">
                 <div className="flex flex-col md:flex-row items-center bg-base-200 rounded-lg shadow-lg overflow-hidden">
 
                     {/* Left Side - Illustration */}
                     <div className="md:w-1/2 w-full">
-                        <img
+                        {/* <img
                             src="https://images-na.ssl-images-amazon.com/images/I/81t2CVWEsUL.jpg"
                             alt="Bookshelf Illustration"
-                            className="w-full h-full object-cover"
-                        />
+                            className="w-full h-[100px] object-cover"
+                        /> */}
+                        <Lottie animationData={why}></Lottie>
                     </div>
 
                     {/* Right Side - Text */}

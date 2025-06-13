@@ -7,20 +7,20 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #6B4226;    /* Rich brown (book spine / wood tone) */
-  --color-secondary: #D5A021;  /* Warm amber / golden highlight */
-  --color-accent: #A26769;     /* Subtle dusty rose for accents */
-  --color-neutral: #f5f5f5;    /* Light background */
-  --color-base-100: #fffaf5;   /* Soft parchment white */
+   --color-primary: #2F4550;    /* Slate blue-gray */
+  --color-secondary: #586F7C;  /* Muted steel */
+  --color-accent: #B8DBD9;     /* Soft teal */
+  --color-neutral: #f4f4f4;    /* Light paper */
+  --color-base-100: #ffffff;   /* Pure white */
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: #f4c95d;    /* Golden reading lamp */
-  --color-secondary: #a1866f;  /* Muted cocoa tone */
-  --color-accent: #dcc9b6;     /* Ivory/linen accent */
-  --color-neutral: #1e1e1e;    /* Deep background */
-  --color-base-100: #2a2a2a;   /* Card color */
+   --color-primary: #A9BCD0;    /* Soft slate */
+  --color-secondary: #3B3B3B;  /* Steely black */
+  --color-accent: #669BBC;     /* Cool blue accent */
+  --color-neutral: #1c1c1c;    /* Matte charcoal */
+  --color-base-100: #252525;   /* Modern black */
 }
 .btn {
   color: white;

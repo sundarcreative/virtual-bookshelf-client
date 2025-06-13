@@ -3,45 +3,57 @@ import { Link } from 'react-router';
 
 const categories = [
   {
+    name: 'Biographies',
+    description: 'Discover lives that shaped history and inspired generations.',
+    image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
+  },
+  {
     name: 'Fiction',
-    description: 'Stories born from imagination, emotion, and creativity.',
-    image: 'https://cdn.pixabay.com/photo/2020/03/19/14/07/books-4940482_960_720.jpg'
+    description: 'Escape into crafted worlds full of emotion, thrill, and wonder.',
+    image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
   },
   {
-    name: 'Non-Fiction',
-    description: 'Based on facts, reality, and inspiring true events.',
-    image: 'https://cdn.pixabay.com/photo/2015/06/24/15/45/book-820272_960_720.jpg'
-  },
-  {
-    name: 'Fantasy',
-    description: 'Enter magical worlds with dragons, spells, and adventure.',
-    image: 'https://cdn.pixabay.com/photo/2016/11/29/12/54/book-1869981_960_720.jpg'
+    name: 'Cooking',
+    description: 'From beginner tips to gourmet secrets, elevate your cooking game.',
+    image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
   }
 ];
 
 const FeaturedCategories = () => {
   return (
-    <section className="container mx-auto px-4 mb-12">
-      <h2 className="text-2xl font-bold mb-6 text-center">🎯 Featured Categories</h2>
+    <section className="container mx-auto px-4 mb-16">
+      <h2 className="text-3xl font-bold text-center text-primary mb-8">
+        🔥 Featured Categories
+      </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.name}
-            className="card bg-base-100 shadow-xl overflow-hidden"
-            whileHover={{ scale: 1.03 }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="relative group h-100 rounded-lg shadow-lg overflow-hidden"
           >
-            <figure className="h-48 overflow-hidden">
-              <img src={cat.image} alt={cat.name} className="w-full object-cover h-full" />
-            </figure>
-            <div className="card-body">
-              <h3 className="card-title">{cat.name}</h3>
-              <p>{cat.description}</p>
-              <div className="card-actions justify-end mt-4">
-                <Link to="/bookshelf" className="btn btn-sm btn-primary">Browse {cat.name}</Link>
-              </div>
+            {/* Background image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-all duration-300 brightness-[.35] group-hover:brightness-[.25]"
+              style={{ backgroundImage: `url(${cat.image})` }}
+            />
+
+            {/* Overlay content */}
+            <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white  ">
+             <div className='border border-white px-4 py-[120px]'>
+                 <h3 className="text-2xl  font-extrabold mb-2">{cat.name}</h3>
+              <p className="text-sm leading-relaxed">{cat.description}</p>
+              <Link
+                to="/bookshelf"
+                className="mt-4 btn btn-sm btn-secondary hover:bg-primary hover:text-white border-none shadow"
+              >
+                View Books
+              </Link>
+             </div>
             </div>
           </motion.div>
         ))}
