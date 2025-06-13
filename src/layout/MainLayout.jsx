@@ -16,6 +16,7 @@ const MainLayout = () => {
   return (
     <>
       <Header></Header>
+      <main className='min-h-[calc(100vh-335px)]'>
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
@@ -25,12 +26,13 @@ const MainLayout = () => {
           variants={pageVariants}
           transition={{ duration: 0.3 }}
         >
-          <main className='min-h-[calc(100vh-335px)'>
+          
             <Outlet></Outlet>
-          </main>
+         
           
         </motion.div>
       </AnimatePresence>
+      </main>
       <Footer></Footer>
     </>
   );
