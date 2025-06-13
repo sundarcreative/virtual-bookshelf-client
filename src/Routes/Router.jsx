@@ -12,6 +12,7 @@ import MyBooks from '../pages/MyBooks';
 import UpdateBook from '../pages/UpdateBook';
 import Profile from '../pages/Profile';
 import Bookshelf from "../pages/Bookshelf.jsx";
+import PrivacyPolicy from "../pages/PrivacyPolicy.jsx";
 
 export const Router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const Router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile /></PrivateRoute>
+            },
+            {
+                path:'/privacypolicy',
+                Component:PrivacyPolicy
             },
 
 
