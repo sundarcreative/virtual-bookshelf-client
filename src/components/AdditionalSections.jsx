@@ -5,8 +5,8 @@ import why from '../assets/animation/why2.json'
 const AdditionalSections = () => {
     return (
         <div>
-            <section className="bg-base-300 py-12 my-24">
-                <div className="max-w-4xl mx-auto px-4 py-14 text-center">
+            <section className=" container mx-auto px-4 py-20 md:py-28 my-8">
+                <div className="max-w-4xl mx-auto px-4 py-14 text-center border">
                     <h2 className="text-3xl font-bold text-primary mb-4">📘 Track Your Reading Goals</h2>
                     <p className="text-gray-600 text-lg leading-relaxed">
                         Stay motivated and build a consistent reading habit by organizing your progress into
@@ -22,8 +22,8 @@ const AdditionalSections = () => {
                 </div>
             </section>
 
-            <section className="container mx-auto px-4 my-24">
-                <div className="flex flex-col md:flex-row items-center bg-base-200 rounded-lg shadow-lg overflow-hidden">
+            <section className="bg-base-300 py-20 md:py-28">
+                <div className="flex flex-col md:flex-row items-center container mx-auto bg-base-200 rounded-lg shadow-lg overflow-hidden">
 
                     {/* Left Side - Illustration */}
                     <div className="md:w-1/2 w-full">
@@ -37,7 +37,7 @@ const AdditionalSections = () => {
 
                     {/* Right Side - Text */}
                     <div className="md:w-1/2 w-full p-8 text-gray-700 space-y-5">
-                        <h2 className="text-3xl font-bold text-primary mb-2">🌟 Why Choose BookShelf?</h2>
+                        <h2 className="text-3xl font-bold text-primary mb-2">Why Choose BookShelf?</h2>
                         <ul className="space-y-3 list-disc list-inside text-base">
                             <li>Organize your reading into clear, trackable statuses.</li>
                             <li>See what others are loving with upvoted books.</li>

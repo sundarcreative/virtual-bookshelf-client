@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router';
 
+
 const categories = [
   {
-    name: 'Biographies',
-    description: 'Discover lives that shaped history and inspired generations.',
+    name: 'Fantasy',
+    description: 'Step into magical realms with dragons, quests, and epic tales.',
     image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
   },
   {
@@ -13,20 +14,27 @@ const categories = [
     image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
   },
   {
-    name: 'Cooking',
-    description: 'From beginner tips to gourmet secrets, elevate your cooking game.',
+    name: 'Non-Fiction',
+    description: 'Explore real stories, memoirs, and thought-provoking insights.',
     image: 'https://i.ibb.co/svbCQP3f/bg.jpg'
   }
-];
-
+]
 const FeaturedCategories = () => {
   return (
-    <section className="container mx-auto px-4 mb-16">
-      <h2 className="text-3xl font-bold text-center text-primary mb-8">
-        🔥 Featured Categories
-      </h2>
+    <section
+      className="py-16 bg-cover bg-center bg-fixed relative"
+      style={{
+        backgroundImage: `url('https://i.ibb.co/qL4whqS7/why-img.webp')`
+      }}
+    >
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+
+      <div className='container px-4 py-14 md:py-20 mx-auto my-8'>
+        <h2 className="text-3xl font-bold text-center text-primary mb-8">
+         Featured Categories
+      </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.name}
@@ -57,6 +65,7 @@ const FeaturedCategories = () => {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );
