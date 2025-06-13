@@ -97,8 +97,9 @@ const Register = () => {
                         {
                             passError && <h1 className='text-red-500'>{passError}</h1>
                         }
-                        <button type='submit' className="btn btn-neutral mt-4">Register</button>
-                        <button onClick={handleGoogle} className="btn btn-secondary ">
+                        <button type='submit' className="btn btn-secondary mt-4">Register</button>
+                        <div className="divider">OR</div>
+                        <button onClick={handleGoogle} className="btn btn-accent ">
                             <BsGoogle></BsGoogle> Login with Google
                         </button>
                     </fieldset>

@@ -26,13 +26,19 @@ const UpdateBook = () => {
   };
 
   const handleUpdate = e => {
-    e.preventDefault();
-    axios.put(`http://localhost:3000/books/${id}`, book)
-      .then(() => {
-        toast.success('Book updated!');
-        navigate('/my-books');
-      });
-  };
+  e.preventDefault();
+  axios.put(`http://localhost:3000/books/${id}`, book)
+    .then(() => {
+      toast.success('Book updated!');
+      console.log('Updating book with data:', book);
+      navigate('/my-books');
+    })
+    .catch(err => {
+      toast.error('Update failed');
+      console.error(err.response?.data || err.message);
+    });
+};
+
 
   if (!book) return <div>Loading...</div>;
 

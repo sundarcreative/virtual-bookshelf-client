@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 const Header = () => {
@@ -16,7 +17,9 @@ const Header = () => {
         document.querySelector('html').setAttribute('data-theme', theme);
         localStorage.setItem("theme", theme);
     }, [theme]);
-
+     const handleThemeToggle = () => {
+        setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    };
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -43,40 +46,43 @@ const Header = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <NavLink to='/'> Home</NavLink>
+                            <li><NavLink to="/">Home</NavLink></li>
                             <li><NavLink to="/bookshelf">Bookshelf</NavLink></li>
-                            {user && <li><NavLink to="/add-book">Add Book</NavLink></li>}
-                            {user && <li><NavLink to="/my-books">My Books</NavLink></li>}
-                            {user && <li><NavLink to="/profile">Profile</NavLink></li>}
+                            <li><NavLink to="/add-book">Add Book</NavLink></li>
+                            <li><NavLink to="/my-books">My Books</NavLink></li>
+                            <li><NavLink to="/profile">Profile</NavLink></li>
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl"><div className="md:text-3xl text-white font-medium"><h1>V<span className='text-secondary'>📚 BookShelf</span></h1></div></a>
+                    <a className="btn btn-ghost text-xl"><div className="md:text-3xl text-white font-medium"><h1>VR<span className='text-secondary'>📚booK</span></h1></div></a>
                 </div>
                 <div className="navbar-center text-white  hidden lg:flex ">
                     <ul className="menu menu-horizontal flex gap-4 text-[16px] px-1">
-                        <li><NavLink to='/'> Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/bookshelf">Bookshelf</NavLink></li>
-                        {user && <li><NavLink to="/add-book">Add Book</NavLink></li>}
-                        {user && <li><NavLink to="/my-books">My Books</NavLink></li>}
-                        {user && <li><NavLink to="/profile">Profile</NavLink></li>}
+                        <li><NavLink to="/add-book">Add Book</NavLink></li>
+                        <li><NavLink to="/my-books">My Books</NavLink></li>
+                        <li><NavLink to="/profile">Profile</NavLink></li>
 
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <div className="login-btn flex gap-5">
-                        <label className="cursor-pointer flex items-center gap-2 shadow-sm  p-1 bg-secondary rounded-2xl">
-                            🌞
-                            <input
-                                type="checkbox"
-                                className="toggle toggle-primary"
-                                checked={theme === "dark"}
-                                onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
-                            />
-                            🌙
-                        </label>
+                         <button
+                            onClick={handleThemeToggle}
+                            className="btn btn-sm btn-circle bg-secondary text-white"
+                        >
+                            {theme === "light" ? <FaMoon /> : <FaSun />}
+                        </button>
 
-                        <img className='w-12 hidden md:block rounded-full cursor-pointer' src={`${user ? user.photoURL : ''}`} alt="user" title={user ? user.displayName : 'guest'} />
+                        {user &&
+                            <img
+                                className='w-10 h-10 hidden md:block rounded-full object-cover cursor-pointer'
+                                src={user.photoURL}
+                                alt="user"
+                                title={user.displayName}
+                            />
+                        }
                         {
                             user ? <button onClick={handleLogout} className='btn btn-secondary text-primary'>Log Out</button> : <Link to='login' className='btn btn-secondary md:px-10 text-primary'  >Login</Link>
                         }

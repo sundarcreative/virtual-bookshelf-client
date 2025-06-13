@@ -107,8 +107,9 @@ const Login = () => {
                         }
                         <div ><a onClick={handleForgetPass} className="link link-hover">Forgot password?</a></div>
 
-                        <button type='submit' className="btn btn-neutral mt-4">Login</button>
-                        <button onClick={handleGoogle} className="btn btn-secondary ">
+                        <button type='submit' className="btn btn-secondary mt-4">Login</button>
+                          <div className="divider">OR</div>
+                        <button onClick={handleGoogle} className="btn btn-accent ">
                             <BsGoogle></BsGoogle> Login with Google
                         </button>
 

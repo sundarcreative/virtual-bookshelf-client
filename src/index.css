@@ -1,2 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #6B4226;    /* Rich brown (book spine / wood tone) */
+  --color-secondary: #D5A021;  /* Warm amber / golden highlight */
+  --color-accent: #A26769;     /* Subtle dusty rose for accents */
+  --color-neutral: #f5f5f5;    /* Light background */
+  --color-base-100: #fffaf5;   /* Soft parchment white */
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #f4c95d;    /* Golden reading lamp */
+  --color-secondary: #a1866f;  /* Muted cocoa tone */
+  --color-accent: #dcc9b6;     /* Ivory/linen accent */
+  --color-neutral: #1e1e1e;    /* Deep background */
+  --color-base-100: #2a2a2a;   /* Card color */
+}
+.btn {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+*{
+
+  font-family: "Noto Serif", serif;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+  border-radius: 10px;
+}

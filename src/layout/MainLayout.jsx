@@ -25,7 +25,10 @@ const MainLayout = () => {
           variants={pageVariants}
           transition={{ duration: 0.3 }}
         >
-          <Outlet></Outlet>
+          <main className='min-h-[calc(100vh-335px)'>
+            <Outlet></Outlet>
+          </main>
+          
         </motion.div>
       </AnimatePresence>
       <Footer></Footer>
