@@ -1,14 +1,16 @@
-import { useParams } from 'react';
+
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router';
 
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState('');
+  const [editingReview, setEditingReview] = useState(null);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -17,27 +19,62 @@ const BookDetails = () => {
   }, [id]);
 
   const handleUpvote = () => {
-    axios.patch(`http://localhost:3000/books/${id}/upvote`, { email: user.email })
-      .then(res => {
+    axios.patch(`http://localhost:3000/books/upvote/${id}`, { email: user.email })
+      .then(() => {
         toast.success('Upvoted!');
-        setBook(res.data);
+        // Refetch the updated book data
+        axios.get(`http://localhost:3000/books/${id}`).then(res => setBook(res.data));
       })
       .catch(err => toast.error(err.response?.data?.message));
   };
 
+
   const handleReview = () => {
-    axios.post(`http://localhost:3000/reviews`, {
-      book_id: id,
-      user_email: user.email,
-      review_text: reviewText
-    })
-    .then(res => {
-      toast.success('Review posted');
-      setReviews([res.data, ...reviews]);
-      setReviewText('');
-    })
-    .catch(err => toast.error(err.response?.data?.message));
+    if (editingReview) {
+      axios.put(`http://localhost:3000/reviews/${editingReview._id}`, {
+        review_text: reviewText
+      }).then(res => {
+        toast.success("Review updated");
+        const updated = reviews.map(r =>
+          r._id === editingReview._id ? { ...r, review_text: reviewText } : r
+        );
+        setReviews(updated);
+        setEditingReview(null);
+        setReviewText('');
+        console.log(res.data);
+      });
+    } else {
+      axios.post(`http://localhost:3000/reviews`, {
+        book_id: id,
+        user_email: user.email,
+        review_text: reviewText
+      })
+        .then(res => {
+          toast.success('Review posted');
+          setReviews([res.data, ...reviews]);
+          setReviewText('');
+        })
+        .catch(err => toast.error(err.response?.data?.message));
+    }
   };
+
+
+
+  const handleEdit = (review) => {
+    setReviewText(review.review_text);
+    setEditingReview(review);
+  };
+
+  const handleDelete = (reviewId) => {
+    if (confirm("Delete this review?")) {
+      axios.delete(`http://localhost:3000/reviews/${reviewId}`)
+        .then(() => {
+          toast.success("Review deleted");
+          setReviews(reviews.filter(r => r._id !== reviewId));
+        });
+    }
+  };
+
 
   if (!book) return <div className="p-4">Loading...</div>;
 
@@ -69,12 +106,30 @@ const BookDetails = () => {
         }
         <ul className="space-y-2">
           {reviews.map(r => (
-            <li key={r._id} className="bg-base-200 p-3 rounded">
+            <li key={r._id} className="bg-base-200 p-3 rounded relative">
               <p className="text-sm font-semibold">{r.user_email}</p>
               <p>{r.review_text}</p>
+
+              {user?.email === r.user_email && (
+                <div className="mt-2 flex gap-2">
+                  <button
+                    className="btn btn-xs btn-warning"
+                    onClick={() => handleEdit(r)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-xs btn-error"
+                    onClick={() => handleDelete(r._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </li>
           ))}
         </ul>
+
       </div>
     </div>
   );

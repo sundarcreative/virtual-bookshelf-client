@@ -44,20 +44,22 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <NavLink to='/'> Home</NavLink>
-                            <NavLink to='/allrecipe'>All Recipe</NavLink>
-                            <NavLink to='/addrecipe'>Add Recipe</NavLink>
-                            <NavLink to='/myrecipe'>My Recipe</NavLink>
+                            <li><NavLink to="/bookshelf">Bookshelf</NavLink></li>
+                            {user && <li><NavLink to="/add-book">Add Book</NavLink></li>}
+                            {user && <li><NavLink to="/my-books">My Books</NavLink></li>}
+                            {user && <li><NavLink to="/profile">Profile</NavLink></li>}
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl"><div className="md:text-3xl text-white font-medium"><h1>Recipe<span className='text-secondary'>booK</span></h1></div></a>
+                    <a className="btn btn-ghost text-xl"><div className="md:text-3xl text-white font-medium"><h1>V<span className='text-secondary'>📚 BookShelf</span></h1></div></a>
                 </div>
                 <div className="navbar-center text-white  hidden lg:flex ">
                     <ul className="menu menu-horizontal flex gap-4 text-[16px] px-1">
-                        <NavLink to='/'> Home</NavLink>
-                        <NavLink to='/allrecipe'>All Recipe</NavLink>
-                        <NavLink to='/addrecipe'>Add Recipe</NavLink>
-                        <NavLink to='/myrecipe'>My Recipe</NavLink>
+                        <li><NavLink to='/'> Home</NavLink></li>
+                        <li><NavLink to="/bookshelf">Bookshelf</NavLink></li>
+                        {user && <li><NavLink to="/add-book">Add Book</NavLink></li>}
+                        {user && <li><NavLink to="/my-books">My Books</NavLink></li>}
+                        {user && <li><NavLink to="/profile">Profile</NavLink></li>}
 
                     </ul>
                 </div>

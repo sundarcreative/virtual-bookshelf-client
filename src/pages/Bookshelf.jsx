@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import BookCard from '../components/BookCard';
+import BookCard from '../components/BookCard.jsx'
 import axios from 'axios';
 
 const Bookshelf = () => {
@@ -37,7 +37,7 @@ const Bookshelf = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {filtered.map(book => <BookCard key={book._id} book={book} />)}
+        {filtered.map(book => <BookCard key={book._id} book={book}></BookCard>)}
       </div>
     </div>
   );
