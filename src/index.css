@@ -7,20 +7,20 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-   --color-primary: #2F4550;    /* Slate blue-gray */
-  --color-secondary: #586F7C;  /* Muted steel */
-  --color-accent: #B8DBD9;     /* Soft teal */
-  --color-neutral: #f4f4f4;    /* Light paper */
-  --color-base-100: #ffffff;   /* Pure white */
+   --color-primary: #2F4550;    
+  --color-secondary: #586F7C;  
+  --color-accent: #B8DBD9;     
+  --color-neutral: #f4f4f4;    
+  --color-base-100: #ffffff;   
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-   --color-primary: #A9BCD0;    /* Soft slate */
-  --color-secondary: #3B3B3B;  /* Steely black */
-  --color-accent: #669BBC;     /* Cool blue accent */
-  --color-neutral: #1c1c1c;    /* Matte charcoal */
-  --color-base-100: #252525;   /* Modern black */
+   --color-primary: #A9BCD0;    
+  --color-secondary: #3B3B3B;  
+  --color-accent: #669BBC;     
+  --color-neutral: #1c1c1c;    
+  --color-base-100: #252525;   
 }
 .btn {
   color: white;

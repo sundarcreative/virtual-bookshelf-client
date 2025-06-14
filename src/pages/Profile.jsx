@@ -10,7 +10,7 @@ const Profile = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/books').then(res => {
+    axios.get('https://virtual-bookshelf-server-nine.vercel.app/books').then(res => {
       const userBooks = res.data.filter(b => b.user_email === user.email);
       setBooks(userBooks);
     });

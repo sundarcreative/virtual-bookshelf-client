@@ -24,11 +24,11 @@ const Slider = () => {
                     <div className="flex flex-col md:flex-row items-center justify-between h-full w-full overflow-hidden px-8 md:px-16">
                         {/* Left Text Content */}
                         <div className="md:w-1/2 text-center md:text-left py-12 md:pl-10 space-y-6">
-                            <h1 className="text-4xl md:text-6xl font-light text-gray-800 leading-tight">
+                            <h1 className="text-4xl md:text-6xl font-light text-gray-800 leading-tight  ">
                                 Middle-earth <br />
                                 <span className="font-bold">Adventure Box</span>
                             </h1>
-                            <ul className="space-y-2 text-gray-800 text-base">
+                            <ul className="space-y-2 text-gray-800 text-base ">
                                 <li>🗺️ Includes Map of the Shire & Beyond</li>
                                 <li>🧙‍♂️ Gandalf's Magical Quote Cards</li>
                                 <li>💍 Collector's Mini One Ring Replica</li>

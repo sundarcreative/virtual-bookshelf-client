@@ -28,7 +28,7 @@ const AddBook = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:3000/books', formData)
+    axios.post('https://virtual-bookshelf-server-nine.vercel.app/books', formData)
       .then(() => {
         toast.success('Book added!');
         navigate('/my-books');

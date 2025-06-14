@@ -5,6 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import Lottie from 'lottie-react';
 import add from '../assets/animation/addbook.json'
+import Loading from '../components/Loading';
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const UpdateBook = () => {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/books/${id}`).then(res => {
+    axios.get(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`).then(res => {
       if (res.data.user_email !== user.email) {
         toast.error("Unauthorized");
         navigate('/');
@@ -29,10 +30,10 @@ const UpdateBook = () => {
 
   const handleUpdate = e => {
   e.preventDefault();
-  axios.put(`http://localhost:3000/books/${id}`, book)
+  axios.put(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`, book)
     .then(() => {
       toast.success('Book updated!');
-      console.log('Updating book with data:', book);
+      // console.log('Updating book with data:', book);
       navigate('/my-books');
     })
     .catch(err => {
@@ -42,7 +43,7 @@ const UpdateBook = () => {
 };
 
 
-  if (!book) return <div>Loading...</div>;
+  if (!book) return <div><Loading></Loading></div>;
 
   return (
     <div className='container mx-auto my-10 px-4 grid md:grid-cols-2 gap-10 items-start bg-neutral shadow-lg rounded-xl'>

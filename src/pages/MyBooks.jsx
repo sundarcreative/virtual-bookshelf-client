@@ -2,28 +2,38 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import { Link } from 'react-router';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const MyBooks = () => {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/books')
+    axios.get('https://virtual-bookshelf-server-nine.vercel.app/books')
       .then(res => {
         const myBooks = res.data.filter(b => b.user_email === user.email);
         setBooks(myBooks);
       });
   }, [user.email]);
 
-  const handleDelete = id => {
-    if (confirm('Are you sure you want to delete this book?')) {
-      axios.delete(`http://localhost:3000/books/${id}`)
-        .then(() => {
-          toast.success('Book deleted');
-          setBooks(books.filter(b => b._id !== id));
-        });
-    }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won’t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`)
+          .then(() => {
+            setBooks(prevBooks => prevBooks.filter(b => b._id !== id));
+            Swal.fire('Deleted!', 'Your book has been deleted.', 'success');
+          });
+      }
+    });
   };
 
   return (

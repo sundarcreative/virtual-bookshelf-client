@@ -42,7 +42,7 @@ const Register = () => {
                     });
                     navigate('/')
                 }).catch((error) => {
-                    console.log(error);
+                    toast(error.message);
                     setUser(user)
                 });
 
@@ -50,7 +50,7 @@ const Register = () => {
             .catch((error) => {
 
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                toast(errorMessage);
             });
 
     }

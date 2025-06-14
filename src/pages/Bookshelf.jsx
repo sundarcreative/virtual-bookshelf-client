@@ -8,7 +8,7 @@ const Bookshelf = () => {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/books')
+    axios.get('https://virtual-bookshelf-server-nine.vercel.app/books')
       .then(res => setBooks(res.data))
       .catch(err => console.error(err));
   }, []);

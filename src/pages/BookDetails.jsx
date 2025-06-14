@@ -16,16 +16,16 @@ const BookDetails = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/books/${id}`).then(res => setBook(res.data));
-    axios.get(`http://localhost:3000/reviews/${id}`).then(res => setReviews(res.data));
+    axios.get(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`).then(res => setBook(res.data));
+    axios.get(`https://virtual-bookshelf-server-nine.vercel.app/reviews/${id}`).then(res => setReviews(res.data));
   }, [id]);
 
   const handleUpvote = () => {
-    axios.patch(`http://localhost:3000/books/upvote/${id}`, { email: user.email })
+    axios.patch(`https://virtual-bookshelf-server-nine.vercel.app/books/upvote/${id}`, { email: user.email })
       .then(() => {
         toast.success('Upvoted!');
         // Refetch the updated book data
-        axios.get(`http://localhost:3000/books/${id}`).then(res => setBook(res.data));
+        axios.get(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`).then(res => setBook(res.data));
       })
       .catch(err => toast.error(err.response?.data?.message));
   };
@@ -33,9 +33,9 @@ const BookDetails = () => {
 
   const handleReview = () => {
     if (editingReview) {
-      axios.put(`http://localhost:3000/reviews/${editingReview._id}`, {
+      axios.put(`https://virtual-bookshelf-server-nine.vercel.app/reviews/${editingReview._id}`, {
         review_text: reviewText
-      }).then(res => {
+      }).then(() => {
         toast.success("Review updated");
         const updated = reviews.map(r =>
           r._id === editingReview._id ? { ...r, review_text: reviewText } : r
@@ -43,10 +43,10 @@ const BookDetails = () => {
         setReviews(updated);
         setEditingReview(null);
         setReviewText('');
-        console.log(res.data);
+        //console.log(res.data);
       });
     } else {
-      axios.post(`http://localhost:3000/reviews`, {
+      axios.post(`https://virtual-bookshelf-server-nine.vercel.app/reviews`, {
         book_id: id,
         user_email: user.email,
         review_text: reviewText
@@ -69,7 +69,7 @@ const BookDetails = () => {
 
   const handleDelete = (reviewId) => {
     if (confirm("Delete this review?")) {
-      axios.delete(`http://localhost:3000/reviews/${reviewId}`)
+      axios.delete(`https://virtual-bookshelf-server-nine.vercel.app/reviews/${reviewId}`)
         .then(() => {
           toast.success("Review deleted");
           setReviews(reviews.filter(r => r._id !== reviewId));
@@ -77,7 +77,7 @@ const BookDetails = () => {
     }
   };
   const updateStatus = (newStatus) => {
-    axios.put(`http://localhost:3000/books/${id}`, { reading_status: newStatus })
+    axios.put(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`, { reading_status: newStatus })
       .then(res => {
         if (res.data.modifiedCount > 0) {
           toast.success('Reading status updated');
