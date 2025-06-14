@@ -20,7 +20,7 @@ const BookCard = ({ book }) => {
       <div className="card-body">
         <h2 className="card-title">{book_title}</h2>
         <p className="text-sm text-gray-500">by {book_author}</p>
-        <p className="badge badge-outline">{book_category}</p>
+        <p className="badge  badge-secondary">{book_category}</p>
         <div className="flex justify-between items-center mt-2">
           <span className="text-sm font-medium text-primary">Upvotes: {upvote}</span>
           <Link to={`/books/${_id}`} className="btn btn-sm btn-primary">Details</Link>

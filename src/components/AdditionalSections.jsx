@@ -6,7 +6,7 @@ const AdditionalSections = () => {
     return (
         <div>
             <section className=" container mx-auto px-4 py-20 md:py-28 my-8">
-                <div className="max-w-4xl mx-auto px-4 py-14 text-center border">
+                <div className="max-w-4xl mx-auto px-4 py-14 text-center  border-b border-t">
                     <h2 className="text-3xl font-bold text-primary mb-4">📘 Track Your Reading Goals</h2>
                     <p className="text-gray-600 text-lg leading-relaxed">
                         Stay motivated and build a consistent reading habit by organizing your progress into
@@ -27,11 +27,7 @@ const AdditionalSections = () => {
 
                     {/* Left Side - Illustration */}
                     <div className="md:w-1/2 w-full">
-                        {/* <img
-                            src="https://images-na.ssl-images-amazon.com/images/I/81t2CVWEsUL.jpg"
-                            alt="Bookshelf Illustration"
-                            className="w-full h-[100px] object-cover"
-                        /> */}
+                       
                         <Lottie animationData={why}></Lottie>
                     </div>
 
