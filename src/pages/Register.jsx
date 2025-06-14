@@ -75,16 +75,24 @@ const Register = () => {
     }
 
     return (
+        <div className="relative min-h-screen flex items-center justify-center px-4">
+
+  {/* Background Image with Opacity */}
+  <div
+    className="absolute inset-0  bg-contain bg-center opacity-80 -z-10 bg-no-repeat"
+    style={{
+      backgroundImage: `url('https://i.ibb.co/cmLkFkj/books-isolated-white.jpg')`,
+    }}
+  ></div>
+
         <div className='my-5' data-aos="fade-up">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto py-5">
+            <div className="card  w-full max-w-sm shrink-0 mx-auto py-5 bg-opacity-20 backdrop-blur-md shadow-2xl p-6 rounded-xl inset-0 bg-black/5">
                 <form onSubmit={handleRegister} className="card-body">
                     <h1 className="text-3xl font-semibold text-center">Register your account</h1>
                     <fieldset className="fieldset">
                         {/* name */}
                         <label className="label">Name</label>
                         <input type="text" className="input" placeholder="Name" name='name' required />
-
-
                         {/* photo url */}
                         <label className="label">Photo URL</label>
                         <input type="text" className="input" placeholder="Photo URL" name='photoURL' required />
@@ -106,6 +114,7 @@ const Register = () => {
                     <p className='text-black text-center font-semibold mt-5'>Already Have An Account ? <Link to='/login' className='text-secondary underline'>Login</Link> </p>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

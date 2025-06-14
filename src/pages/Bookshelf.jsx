@@ -21,7 +21,8 @@ const Bookshelf = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mb-4 flex flex-col md:flex-row items-center gap-4">
+      <h1 className='text-3xl font-bold my-8 text-center'>All Books</h1>
+      <div className="mb-4 flex flex-col md:flex-row items-center justify-center gap-4">
         <input
           type="text"
           placeholder="Search by title or author"

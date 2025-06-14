@@ -22,7 +22,7 @@ const AdditionalSections = () => {
                 </div>
             </section>
 
-            <section className="bg-base-300 py-20 md:py-28">
+            <section className="bg-base-300 py-20 md:py-28 my-8">
                 <div className="flex flex-col md:flex-row items-center container mx-auto bg-base-200 rounded-lg shadow-lg overflow-hidden">
 
                     {/* Left Side - Illustration */}

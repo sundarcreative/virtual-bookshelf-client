@@ -79,45 +79,96 @@ const Login = () => {
     }
 
     return (
-        <div className='my-5' data-aos="fade-up">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto py-5">
-                <form onSubmit={handleLogin} className="card-body">
-                    <h1 className="text-3xl font-semibold text-center">Login your account</h1>
-                    <fieldset className="fieldset">
-                        {/* email */}
-                        <label className="label">Email</label>
-                        <input type="email" className="input" placeholder="Email" name='email' required ref={email2} />
-                        {/* password */}
-                        <label className="label">Password</label>
-                        <div className='relative'>
-                            <input type={showPassword ? 'text' : 'password'} className="input py-5" placeholder="Password" name='password' required />
-                            <button
-                                //toggle eye icon
-                                type='button'
-                                onClick={() => setShowPassword(!showPassword)}
-                                className='btn btn-xs absolute p-2 rounded-full top-2 right-6 z-10 bg-white shadow-none'>
+ <div className="relative min-h-screen flex items-center justify-center px-4">
 
-                                {
-                                    showPassword ? <FaEyeSlash size={18} color='black' /> : <FaEye size={18} color='black' />
-                                }
-                            </button>
-                        </div>
-                        {
-                            errorMessage && <h1 className='text-red-500'>Error: {errorMessage}</h1>
-                        }
-                        <div ><a onClick={handleForgetPass} className="link link-hover">Forgot password?</a></div>
+  {/* Background Image with Opacity */}
+  <div
+    className="absolute inset-0  bg-contain bg-center opacity-80 -z-10 bg-no-repeat"
+    style={{
+      backgroundImage: `url('https://i.ibb.co/cmLkFkj/books-isolated-white.jpg')`,
+    }}
+  ></div>
 
-                        <button type='submit' className="btn btn-secondary mt-4">Login</button>
-                          <div className="divider">OR</div>
-                        <button onClick={handleGoogle} className="btn btn-accent ">
-                            <BsGoogle></BsGoogle> Login with Google
-                        </button>
+  
 
-                    </fieldset>
-                    <p className='text-black text-center font-semibold mt-5'>Don't Have An Account ? <Link to='/register' className='text-secondary underline'>Register</Link> </p>
-                </form>
-            </div>
+  {/* Login Card */}
+  <div className="w-full max-w-sm" data-aos="fade-up">
+    <div className="card w-full max-w-sm shrink-0 mx-auto py-5 bg-opacity-20 backdrop-blur-md shadow-2xl p-6 rounded-xl inset-0 bg-black/5">
+      <form onSubmit={handleLogin} className="card-body ">
+        <h1 className="text-3xl font-bold text-center mb-4">Login your account</h1>
+
+        {/* Email */}
+        <label className="label">Email</label>
+        <input
+          type="email"
+          name="email"
+          ref={email2}
+          className="input input-bordered bg-opacity-30 text-black placeholder-black"
+          placeholder="Email"
+          required
+        />
+
+        {/* Password */}
+        <label className="label">Password</label>
+        <div className="relative">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            className="input input-bordered  bg-opacity-30 text-black placeholder-black w-full pr-10"
+            placeholder="Password"
+            required
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute top-2 right-3 z-10 bg-transparent border-none"
+          >
+            {showPassword ? (
+              <FaEyeSlash size={18} color="black" />
+            ) : (
+              <FaEye size={18} color="black" />
+            )}
+          </button>
         </div>
+
+        {errorMessage && (
+          <p className="text-red-400 mt-2">Error: {errorMessage}</p>
+        )}
+
+        <div>
+          <a
+            onClick={handleForgetPass}
+            className="link link-hover text-sm"
+          >
+            Forgot password?
+          </a>
+        </div>
+
+        <button type="submit" className="btn btn-secondary mt-4">
+          Login
+        </button>
+
+        <div className="divider text-black">OR</div>
+
+        <button
+          onClick={handleGoogle}
+          className="btn btn-accent flex gap-2 items-center"
+        >
+          <BsGoogle /> Login with Google
+        </button>
+
+        <p className="text-center font-semibold mt-5 ">
+          Don't Have An Account?{' '}
+          <Link to="/register" className="text-secondary underline">
+            Register
+          </Link>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
     );
 };
 

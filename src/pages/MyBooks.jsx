@@ -27,17 +27,19 @@ const MyBooks = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-xl font-bold mb-4">My Books</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="container mx-auto p-4 ">
+      <h1 className='text-3xl font-bold my-8 text-center'>My Books</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-neutral p-2 md:p-6 shadow-xl" >
         {books.map(book => (
           <div key={book._id} className="card bg-base-100 shadow-md">
             <figure><img src={book.cover_photo} alt={book.book_title} className="h-48 w-full object-cover" /></figure>
             <div className="card-body">
               <h3 className="card-title">{book.book_title}</h3>
+              <h3 className="">{book.book_author}</h3>
+              <h3 className="">{book.book_overview}</h3>
               <div className="flex justify-between mt-3">
-                <Link to={`/update-book/${book._id}`} className="btn btn-xs btn-info">Update</Link>
-                <button onClick={() => handleDelete(book._id)} className="btn btn-xs btn-error">Delete</button>
+                <Link to={`/update-book/${book._id}`} className="btn  btn-secondary">Update</Link>
+                <button onClick={() => handleDelete(book._id)} className="btn  bg-red-500">Delete</button>
               </div>
             </div>
           </div>

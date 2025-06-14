@@ -29,7 +29,7 @@ const Profile = () => {
   const unreadCount = totalBooks - readCount;
 
   return (
-    <div className="container mx-auto p-6 text-center">
+    <div className="container mx-auto p-6 text-center bg-neutral mt-5 shadow-xl">
       {/* User Info */}
       <div className="flex flex-col items-center mb-8">
         <div className="avatar mb-4">

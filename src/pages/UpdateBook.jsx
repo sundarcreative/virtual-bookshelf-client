@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
+import Lottie from 'lottie-react';
+import add from '../assets/animation/addbook.json'
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -43,7 +45,11 @@ const UpdateBook = () => {
   if (!book) return <div>Loading...</div>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-base-200 rounded-lg">
+    <div className='container mx-auto my-10 px-4 grid md:grid-cols-2 gap-10 items-start bg-neutral shadow-lg rounded-xl'>
+          <div  className="flex justify-center items-center">
+            <Lottie animationData={add}></Lottie>
+          </div>
+    <div className="p-6 flex flex-col gap-3 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Update Book</h2>
       <form onSubmit={handleUpdate} className="grid grid-cols-1 gap-4">
         <input className="input input-bordered" name="book_title" value={book.book_title} onChange={handleChange} />
@@ -63,6 +69,7 @@ const UpdateBook = () => {
         </select>
         <button className="btn btn-primary mt-2">Update Book</button>
       </form>
+    </div>
     </div>
   );
 };
