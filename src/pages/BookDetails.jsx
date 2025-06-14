@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
 import Lottie from 'lottie-react';
 import why from '../assets/animation/review.json'
+import Loading from '../components/Loading';
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -88,7 +89,7 @@ const BookDetails = () => {
 
 
 
-  if (!book) return <div className="p-4">Loading...</div>;
+  if (!book) return <div><Loading></Loading></div>;
 
   return (
     <div className="container mx-auto p-4">

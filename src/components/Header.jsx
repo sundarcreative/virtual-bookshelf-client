@@ -54,7 +54,7 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl"><div className="md:text-3xl text-white font-medium"><h1>VR<span className='text-secondary'>📚booK</span></h1></div></a>
+                    <a className=" text-xl"><div className="md:text-3xl text-white font-medium"><h1>VR<span className='text-secondary'>📚booK</span></h1></div></a>
                 </div>
                 <div className="navbar-center text-white  hidden lg:flex ">
                     <ul className="menu menu-horizontal flex gap-4 text-[16px] px-1">
