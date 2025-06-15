@@ -1,12 +1,48 @@
-# React + Vite
+# 📚 Virtual Bookshelf – Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, animation-rich frontend React application that allows users to create and manage a personal digital bookshelf. This includes reading progress, reviews, filtering, and search — all integrated with Firebase authentication and MongoDB-backed API.
 
-Currently, two official plugins are available:
+## 🔗 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [https://vrbookshelf.netlify.app/](https://vrbookshelf.netlify.app/)
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Tailwind CSS
+- DaisyUI
+- React Router DOM
+- Firebase Authentication (Google + Email/Password)
+- Axios
+- Framer Motion
+- React Toastify
+- SweetAlert2
+- Swiper.js (slider)
+- Lottie-react
+- Recharts
+- React Icons
+
+## 🔐 Features
+
+- 🔐 Firebase Authentication (Google & Email/Password)
+- 📚 Add, update, delete books (with reading status)
+- ✨ Animation-enhanced UI with Framer Motion and Lottie
+- 🎨 Dark mode friendly with DaisyUI themes
+- 📊 Profile dashboard with charts (Recharts)
+- 🔍 Book filtering by title, author & reading status
+- 💬 Reviews system (add/edit/delete per user)
+- ⏫ Upvote system to highlight popular books
+- 📱 Fully responsive for mobile, tablet, and desktop
+- 🌈 Modern design inspired by Goodreads/LibraryThing
+
+## 📄 Pages & Routes
+
+- `/` – Home (slider, popular books, featured categories, extras)
+- `/bookshelf` – Public book list with filters
+- `/books/:id` – Book details (upvote + reviews + reading tracker)
+- `/add-book` 🔒 – Add a new book (private)
+- `/my-books` 🔒 – View and manage own books (update/delete)
+- `/update-book/:id` 🔒 – Update specific book
+- `/profile` 🔒 – Personal dashboard with stats
+- `/login`, `/register` – Auth pages
+- `*` – 404 not found

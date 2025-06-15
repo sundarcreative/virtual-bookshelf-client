@@ -3,20 +3,27 @@ import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import { getFirebaseToken } from '../utils/getFirebaseToken';
 
 const MyBooks = () => {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://virtual-bookshelf-server-nine.vercel.app/books')
-      .then(res => {
-        const myBooks = res.data.filter(b => b.user_email === user.email);
-        setBooks(myBooks);
-      });
-  }, [user.email]);
+ useEffect(() => {
+  const fetchBooks = async () => {
+    const token = await getFirebaseToken();
+    axios.get(`https://virtual-bookshelf-server-nine.vercel.app/books/user/${user.email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => setBooks(res.data));
+  };
+  fetchBooks();
+}, [user.email]);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
+      const token = await getFirebaseToken();
     Swal.fire({
       title: 'Are you sure?',
       text: 'You won’t be able to revert this!',
@@ -27,7 +34,11 @@ const MyBooks = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`)
+        axios.delete(`https://virtual-bookshelf-server-nine.vercel.app/books/${id}`, {
+           headers: {
+          Authorization: `Bearer ${token}`
+        }
+        })
           .then(() => {
             setBooks(prevBooks => prevBooks.filter(b => b._id !== id));
             Swal.fire('Deleted!', 'Your book has been deleted.', 'success');

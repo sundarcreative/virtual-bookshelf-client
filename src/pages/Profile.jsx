@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import { AuthContext } from '../provider/AuthProvider';
+import { getFirebaseToken } from '../utils/getFirebaseToken';
 
 const COLORS = ['#4ade80', '#60a5fa', '#facc15', '#f87171', '#a78bfa'];
 
@@ -10,11 +11,18 @@ const Profile = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    axios.get('https://virtual-bookshelf-server-nine.vercel.app/books').then(res => {
-      const userBooks = res.data.filter(b => b.user_email === user.email);
-      setBooks(userBooks);
-    });
-  }, [user.email]);
+  const fetchBooks = async () => {
+    const token = await getFirebaseToken();
+    axios.get(`https://virtual-bookshelf-server-nine.vercel.app/books/user/${user.email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => setBooks(res.data));
+  };
+  fetchBooks();
+}, [user.email]);
+
 
   // Count by category
   const categoryCounts = books.reduce((acc, book) => {

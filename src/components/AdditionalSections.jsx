@@ -1,6 +1,7 @@
 import Lottie from 'lottie-react';
 import React from 'react';
 import why from '../assets/animation/why2.json'
+import { NavLink } from 'react-router';
 
 const AdditionalSections = () => {
     return (
@@ -16,8 +17,9 @@ const AdditionalSections = () => {
                         Monitor your journey and celebrate your milestones.
                     </p>
                     <div className="mt-6 flex justify-center gap-4">
-                        <button className="btn btn-primary btn-sm">Start a New Goal</button>
-                        <button className="btn btn-accent btn-sm">View My Books</button>
+                        <NavLink to='/bookshelf'><button  className="btn btn-primary btn-sm">Start a New Goal</button></NavLink>
+                        <NavLink to='/bookshelf'><button className="btn btn-accent btn-sm">View My Books</button></NavLink>
+                        
                     </div>
                 </div>
             </section>

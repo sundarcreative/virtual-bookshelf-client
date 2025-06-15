@@ -24,11 +24,11 @@ const Slider = () => {
                     <div className="flex flex-col md:flex-row items-center justify-between h-full w-full overflow-hidden px-8 md:px-16">
                         {/* Left Text Content */}
                         <div className="md:w-1/2 text-center md:text-left py-12 md:pl-10 space-y-6">
-                            <h1 className="text-4xl md:text-6xl font-light text-gray-800 leading-tight  ">
+                            <h1 className="text-4xl md:text-6xl font-light text-base-content leading-tight  ">
                                 Middle-earth <br />
                                 <span className="font-bold">Adventure Box</span>
                             </h1>
-                            <ul className="space-y-2 text-gray-800 text-base ">
+                            <ul className="space-y-2 text-base-content text-base ">
                                 <li>🗺️ Includes Map of the Shire & Beyond</li>
                                 <li>🧙‍♂️ Gandalf's Magical Quote Cards</li>
                                 <li>💍 Collector's Mini One Ring Replica</li>
@@ -54,11 +54,11 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="flex flex-col md:flex-row items-center justify-between h-full w-full overflow-hidden px-8 md:px-16 ">
                         <div className="md:w-1/2 text-center md:text-left py-12 md:pl-10 space-y-6">
-                            <h1 className="text-4xl md:text-6xl font-light text-gray-800 leading-tight">
+                            <h1 className="text-4xl md:text-6xl font-light text-base-content leading-tight">
                                 Big Brother <br />
                                 <span className="font-bold">Surveillance Set</span>
                             </h1>
-                            <ul className="space-y-2 text-gray-800 text-base">
+                            <ul className="space-y-2 text-base-content text-base">
                                 <li>📘 Dystopian Journal & Bookmark</li>
                                 <li>🎥 "You Are Watched" Poster Pack</li>
                                 <li>🔐 Privacy Sticker & Locking Diary</li>
@@ -83,11 +83,11 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="flex flex-col md:flex-row items-center justify-between h-full w-full overflow-hidden px-8 md:px-16">
                         <div className="md:w-1/2 text-center md:text-left py-12 md:pl-10 space-y-6">
-                            <h1 className="text-4xl md:text-6xl font-light text-gray-800 leading-tight">
+                            <h1 className="text-4xl md:text-6xl font-light text-base-content leading-tight">
                                 Regency Romance <br />
                                 <span className="font-bold">Collector's Crate</span>
                             </h1>
-                            <ul className="space-y-2 text-gray-800 text-base">
+                            <ul className="space-y-2 text-base-content text-base">
                                 <li>💌 Elegant Letter Set & Quill Pen</li>
                                 <li>🎩 Mr. Darcy’s Favorite Tea Blend</li>
                                 <li>📖 Limited Edition Book Cover Print</li>

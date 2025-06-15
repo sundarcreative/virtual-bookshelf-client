@@ -5,9 +5,11 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import Lottie from 'lottie-react';
 import add from '../assets/animation/addbook.json'
+import { getFirebaseToken } from '../utils/getFirebaseToken';
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
+ 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     book_title: '',
@@ -26,18 +28,32 @@ const AddBook = () => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    axios.post('https://virtual-bookshelf-server-nine.vercel.app/books', formData)
-      .then(() => {
-        toast.success('Book added!');
-        navigate('/my-books');
-      })
-      .catch(() => toast.error('Error adding book'));
-  };
+  const handleSubmit = async e => {
+  e.preventDefault();
+  const token = await getFirebaseToken();
+
+  axios.post('https://virtual-bookshelf-server-nine.vercel.app/books', formData, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(() => {
+    toast.success('Book added!');
+    navigate('/my-books');
+  })
+  .catch(() => toast.error('Error adding book'));
+};
 
   return (
-    <div className='container mx-auto my-10 px-4 grid md:grid-cols-2 gap-10 items-start bg-base-200 shadow-lg rounded-xl'>
+    <div className='container mx-auto my-10 px-4'>
+      <div className="text-center mx-auto mb-10 space-y-3">
+      <h1 className="text-4xl font-bold text-primary">📘 Your Next Favorite Book Lives Here</h1>
+      <p className="italic text-sm text-base-content max-w-2xl mx-auto">
+        “A reader lives a thousand lives before he dies. The man who never reads lives only one.” — George R.R. Martin
+      </p>
+    </div>
+
+      <div className='grid md:grid-cols-2 gap-10 items-start bg-base-200 shadow-lg rounded-xl'>
       <div  className="flex justify-center items-center">
         <Lottie animationData={add}></Lottie>
       </div>
@@ -63,6 +79,8 @@ const AddBook = () => {
       </form>
     </div>
     </div>
+    </div>
+    
   );
 };
 
