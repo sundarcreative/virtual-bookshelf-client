@@ -49,7 +49,7 @@ const ForgetPass = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <button onClick={handleForgetPassword} className="btn btn-neutral mt-4">
+                    <button onClick={handleForgetPassword} className="btn btn-secondary mt-4">
                         Reset Password
                     </button>
                 </fieldset>

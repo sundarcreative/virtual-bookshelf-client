@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { Fade } from 'react-awesome-reveal';
 import { Link } from 'react-router';
 
 
@@ -35,13 +35,8 @@ const FeaturedCategories = () => {
          Featured Categories
       </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {categories.map((cat, i) => (
-          <motion.div
-            key={cat.name}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            whileHover={{ scale: 1.02 }}
+        {categories.map((cat) => (
+          <Fade direction='up' delay={300} triggerOnce>  <div
             className="relative group h-100 rounded-lg shadow-lg overflow-hidden"
           >
             {/* Background image */}
@@ -63,7 +58,8 @@ const FeaturedCategories = () => {
               </Link>
              </div>
             </div>
-          </motion.div>
+          </div></Fade>
+         
         ))}
       </div>
       </div>

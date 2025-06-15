@@ -2,10 +2,13 @@ import Lottie from 'lottie-react';
 import React from 'react';
 import why from '../assets/animation/why2.json'
 import { NavLink } from 'react-router';
+import { Fade } from 'react-awesome-reveal';
+
 
 const AdditionalSections = () => {
     return (
         <div>
+            <Fade direction='up' delay={300} triggerOnce> 
             <section className=" container mx-auto px-4 py-20 md:py-28 my-8">
                 <div className="max-w-4xl mx-auto px-4 py-14 text-center  border-b border-t">
                     <h2 className="text-3xl font-bold text-primary mb-4">📘 Track Your Reading Goals</h2>
@@ -23,15 +26,19 @@ const AdditionalSections = () => {
                     </div>
                 </div>
             </section>
-
+            </Fade>
+                  <Fade direction='up' delay={300} triggerOnce> 
             <section className="bg-base-300 py-20 md:py-28 my-8">
                 <div className="flex flex-col md:flex-row items-center container mx-auto bg-base-200 rounded-lg shadow-lg overflow-hidden">
 
                     {/* Left Side - Illustration */}
+                    
                     <div className="md:w-1/2 w-full">
                        
                         <Lottie animationData={why}></Lottie>
                     </div>
+                  
+                  
 
                     {/* Right Side - Text */}
                     <div className="md:w-1/2 w-full p-8 text-gray-700 space-y-5">
@@ -47,7 +54,7 @@ const AdditionalSections = () => {
                     </div>
                 </div>
             </section>
-
+            </Fade>
 
         </div>
     );
